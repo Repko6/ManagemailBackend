@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Managemail.Common\Managemail.Common.csproj" />
+    <ProjectReference Include="..\Managemail.Model.Common\Managemail.Model.Common.csproj" />
+    <ProjectReference Include="..\Managemail.Service.Common\Managemail.Service.Common.csproj" />
+  </ItemGroup>
+
+</Project>
