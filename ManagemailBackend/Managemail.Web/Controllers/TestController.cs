@@ -1,5 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Managemail.Common;
+using Managemail.Model.Common.Interfaces;
+using Managemail.Service.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Managemail.Web
@@ -8,10 +11,17 @@ namespace Managemail.Web
     [Route(StringConstants.DefaultApiRoute + "[controller]")]
     public class TestController : ControllerBase
     {
-        [HttpGet]
-        public String Get()
+        public TestController(IImportanceTypeLookup importanceTypeLookup)
         {
-            return "Hello world!";
+            ImportanceTypeLookup = importanceTypeLookup;
+        }
+
+        public IImportanceTypeLookup ImportanceTypeLookup { get; }
+
+        [HttpGet]
+        public Task<IEnumerable<IImportanceTypeModel>> GetAsync()
+        {
+            return ImportanceTypeLookup.GetAllAsync();
         }
     }
 }
