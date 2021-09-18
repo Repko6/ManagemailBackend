@@ -65,8 +65,8 @@ namespace Managemail.Alpha
                 IMemberValueResolver instances as transient
                 IMappingAction instances as transient
              */
-            services.AddAutoMapper(Assembly.GetAssembly(typeof(AutomapperRepositoryConfigurationProfile)));
-            
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(AutomapperRepositoryConfigurationProfile)), Assembly.GetAssembly(typeof(AutomapperWebConfigurationProfile)));
+
 
             /* there are thre methods that define dependency injection lifetime: 
                 Singleton: this lifetime creates one instance of the service. The service instance may be created at the registration time by 

@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
 using Managemail.DAL.Entities;
 using Managemail.Model.Common.Interfaces;
-using Managemail.Model.Implementations;
 using Managemail.Repository.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Managemail.Repository.Implementations
