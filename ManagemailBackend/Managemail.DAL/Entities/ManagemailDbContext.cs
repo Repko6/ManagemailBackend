@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Managemail.DAL.Entities
 {
-    public partial class ManagemailContext : DbContext
+    public partial class ManagemailDbContext : DbContext
     {
-        public ManagemailContext(DbContextOptions<ManagemailContext> options)
+        public ManagemailDbContext(DbContextOptions<ManagemailDbContext> options)
             : base(options)
         {
         }

@@ -10,13 +10,13 @@ namespace Managemail.Repository.Implementations
 {
     public class ImportanceTypeRepository : IImportanceTypeRepository
     {
-        public ImportanceTypeRepository(ManagemailContext dbContext, IMapper mapper)
+        public ImportanceTypeRepository(ManagemailDbContext dbContext, IMapper mapper)
         {
             DbContext = dbContext;
             Mapper = mapper;
         }
 
-        public ManagemailContext DbContext { get; }
+        public ManagemailDbContext DbContext { get; }
         public IMapper Mapper { get; }
 
         public async Task<IEnumerable<IImportanceTypeModel>> GetAllAsync()

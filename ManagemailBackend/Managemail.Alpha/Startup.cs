@@ -51,7 +51,7 @@ namespace Managemail.Alpha
             This is conceptually similar to how connection pooling operates in ADO.NET providers and has the advantage of saving some of the 
             cost of initialization of DbContext instance.
              */
-            services.AddDbContextPool<ManagemailContext>(
+            services.AddDbContextPool<ManagemailDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("ManagemailConnectionString")));
 
 
