@@ -5,6 +5,7 @@ using AutoMapper;
 using Managemail.Common;
 using Managemail.Model.Common.Interfaces;
 using Managemail.Service.Common.Interfaces;
+using Managemail.Web.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Managemail.Web
@@ -23,10 +24,10 @@ namespace Managemail.Web
         public IMapper Mapper { get; }
 
         [HttpGet]
-        public async Task<IEnumerable<ImportanceTypeGet>> GetAsync()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var list = await ImportanceTypeLookup.GetAllAsync();
-            return Mapper.Map<IEnumerable<ImportanceTypeGet>>(list);
+            IEnumerable<IImportanceTypeModel> list = await ImportanceTypeLookup.GetAllAsync();
+            return Ok(Mapper.Map<IEnumerable<ImportanceTypeGet>>(list));
         }
 
         public class ImportanceTypeGet

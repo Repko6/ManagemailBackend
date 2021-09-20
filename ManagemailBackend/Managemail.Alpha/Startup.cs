@@ -1,12 +1,16 @@
 using Managemail.DAL.Entities;
+using Managemail.Model.Common.Infrastructure;
 using Managemail.Model.Common.Interfaces;
 using Managemail.Model.Implementations;
+using Managemail.Model.Infrastructure;
 using Managemail.Repository;
 using Managemail.Repository.Common.Interfaces;
 using Managemail.Repository.Implementations;
+using Managemail.Service.Common.Infrastructure;
 using Managemail.Service.Common.Interfaces;
 using Managemail.Service.Implementations.Lookups;
 using Managemail.Service.Implementations.Services;
+using Managemail.Service.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -88,6 +92,9 @@ namespace Managemail.Alpha
             
             services.AddScoped<IImportanceTypeModel, ImportanceTypeModel>();
             services.AddScoped<IEmailHistoryModel, EmailHistoryModel>();
+            
+            services.AddScoped<IResultModel, ResultModel>();
+            services.AddScoped<IOptionsParameters, OptionsParameters>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

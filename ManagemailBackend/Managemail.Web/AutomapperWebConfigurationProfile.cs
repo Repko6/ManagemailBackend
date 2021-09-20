@@ -10,6 +10,14 @@ namespace Managemail.Repository
         {
             CreateMap<Web.ImportanceTypeController.ImportanceTypeGet, ImportanceTypeModel>().ReverseMap();
             CreateMap<Web.ImportanceTypeController.ImportanceTypeGet, IImportanceTypeModel>().ReverseMap();
+
+            CreateMap<Web.EmailHistoryController.EmailHistoryGet, EmailHistoryModel>().ReverseMap();
+            CreateMap<Web.EmailHistoryController.EmailHistoryGet, IEmailHistoryModel>().ReverseMap();
+            CreateMap<Web.EmailHistoryController.ImportanceTypeGet, ImportanceTypeModel>().ReverseMap();
+            CreateMap<Web.EmailHistoryController.ImportanceTypeGet, IImportanceTypeModel>().ReverseMap();
+
+            CreateMap<Web.EmailHistoryController.EmailHistoryPost, EmailHistoryModel>().ReverseMap();
+            CreateMap<Web.EmailHistoryController.EmailHistoryPost, IEmailHistoryModel>().ReverseMap();
         }
     }
 }

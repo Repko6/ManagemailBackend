@@ -31,7 +31,6 @@ namespace Managemail.DAL.Entities
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CcemailAddress)
-                    .IsRequired()
                     .HasColumnType("text")
                     .HasColumnName("CCEmailAddress");
 
