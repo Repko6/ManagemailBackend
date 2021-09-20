@@ -55,7 +55,7 @@ namespace Managemail.Web
 
             if (result.Succeeded)
             {
-                return CreatedAtAction(string.Empty, new { ((IEmailHistoryModel)result.Value).Id });
+                return Created(Request.Path.Value, new { ((IEmailHistoryModel)result.Value).Id });
             }
             return BadRequest(result.Message);
         }
