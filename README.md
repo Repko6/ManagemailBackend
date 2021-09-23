@@ -2,6 +2,7 @@
 
 Backend project for managing emails
 
+Update connection string in Managemail.Alpha -> appSettings.json
 SQL scripts for creating database and tables:
 
 ~~~~sql
