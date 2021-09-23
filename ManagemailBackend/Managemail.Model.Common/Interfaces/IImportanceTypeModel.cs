@@ -13,5 +13,6 @@ namespace Managemail.Model.Common.Interfaces
         DateTime DateUpdated { get; set; }
         String Name { get; set; }
         String Abrv { get; set; }
+        Int32 Sort { get; set; }
     }
 }

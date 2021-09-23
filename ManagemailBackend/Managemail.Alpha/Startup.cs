@@ -105,6 +105,11 @@ namespace Managemail.Alpha
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder
+                .AllowAnyOrigin() //change this only for localhost:3000
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

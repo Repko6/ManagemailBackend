@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Managemail.Model\Managemail.Model.csproj" />
     <ProjectReference Include="..\Managemail.Repository.Common\Managemail.Repository.Common.csproj" />
     <ProjectReference Include="..\Managemail.Service.Common\Managemail.Service.Common.csproj" />
   </ItemGroup>

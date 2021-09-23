@@ -1,28 +1,30 @@
 ﻿using AutoMapper;
 using Managemail.DAL.Entities;
+using Managemail.Model.Common.Infrastructure;
 using Managemail.Model.Common.Interfaces;
 using Managemail.Repository.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Managemail.Repository.Implementations
 {
-    public class ImportanceTypeRepository : IImportanceTypeRepository
+    public class ImportanceTypeRepository : BaseRepository, IImportanceTypeRepository
     {
-        public ImportanceTypeRepository(ManagemailDbContext dbContext, IMapper mapper)
+        public ImportanceTypeRepository(ManagemailDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
-            DbContext = dbContext;
-            Mapper = mapper;
         }
 
-        public ManagemailDbContext DbContext { get; }
-        public IMapper Mapper { get; }
 
-        public async Task<IEnumerable<IImportanceTypeModel>> GetAllAsync()
+        public async Task<IEnumerable<IImportanceTypeModel>> GetAllAsync(IOptionsParameters optionsParameters)
         {
-            var list = await DbContext.ImportanceTypes.ToListAsync();
-            return Mapper.Map<IEnumerable<IImportanceTypeModel>>(list);
+            var list = DbContext.ImportanceTypes.AsQueryable();
+            var orderedList = await OnSorterAsync(list, optionsParameters);
+            return Mapper.Map<IEnumerable<IImportanceTypeModel>>(await orderedList.ToListAsync());
         }
+
     }
 }

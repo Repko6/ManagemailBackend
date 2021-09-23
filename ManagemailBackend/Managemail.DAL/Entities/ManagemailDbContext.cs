@@ -31,12 +31,10 @@ namespace Managemail.DAL.Entities
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.CcemailAddress)
-                    .HasColumnType("text")
+                    .HasMaxLength(1000)
                     .HasColumnName("CCEmailAddress");
 
-                entity.Property(e => e.Content)
-                    .IsRequired()
-                    .HasColumnType("text");
+                entity.Property(e => e.Content).IsRequired();
 
                 entity.Property(e => e.DateCreated).HasColumnType("datetime");
 
@@ -44,15 +42,15 @@ namespace Managemail.DAL.Entities
 
                 entity.Property(e => e.FromEmailAddress)
                     .IsRequired()
-                    .HasColumnType("text");
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.Subject)
                     .IsRequired()
-                    .HasColumnType("text");
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.ToEmailAddress)
                     .IsRequired()
-                    .HasColumnType("text");
+                    .HasMaxLength(250);
 
                 entity.HasOne(d => d.ImportanceType)
                     .WithMany(p => p.EmailHistories)
@@ -69,7 +67,7 @@ namespace Managemail.DAL.Entities
 
                 entity.Property(e => e.Abrv)
                     .IsRequired()
-                    .HasColumnType("text");
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.DateCreated).HasColumnType("datetime");
 
@@ -77,7 +75,7 @@ namespace Managemail.DAL.Entities
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasColumnType("text");
+                    .HasMaxLength(250);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,4 +1,8 @@
-﻿using Managemail.Model.Common.Interfaces;
+﻿using Managemail.Common.Extensions;
+using Managemail.Common.Infrastructure;
+using Managemail.Model.Common.Infrastructure;
+using Managemail.Model.Common.Interfaces;
+using Managemail.Model.Infrastructure;
 using Managemail.Repository.Common.Interfaces;
 using Managemail.Service.Common.Interfaces;
 using System;
@@ -20,7 +24,9 @@ namespace Managemail.Service.Implementations.Lookups
 
         public Task<IEnumerable<IImportanceTypeModel>> GetAllAsync()
         {
-            return Repository.GetAllAsync();
+            IOptionsParameters optionsParameters = new OptionsParameters();
+            optionsParameters.Sorter = PropertyName.GetPropertyName<IImportanceTypeModel>(c => c.Sort).GetDefaultLookupSorter();
+            return Repository.GetAllAsync(optionsParameters);
         }
     }
 }

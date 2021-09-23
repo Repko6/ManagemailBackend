@@ -6,5 +6,6 @@ namespace Managemail.Model.Implementations
     {
         public String Name { get; set; }
         public String Abrv { get; set; }
+        public Int32 Sort { get; set; }
     }
 }

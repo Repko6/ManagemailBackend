@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AutoMapper;
 using Managemail.Common;
+using Managemail.Common.Constants;
+using Managemail.Common.Extensions;
 using Managemail.Common.Infrastructure;
 using Managemail.Model.Common.Infrastructure;
 using Managemail.Model.Common.Interfaces;
@@ -29,13 +31,14 @@ namespace Managemail.Web
         public IMapper Mapper { get; }
 
         [HttpGet]
-        public async Task<IActionResult> FindAsync()
+        public async Task<IActionResult> FindAsync([FromQuery]string orderBy)
         {
             IOptionsParameters options = new OptionsParameters();
             options.Includes = new List<string>()
             {
                 PropertyName.GetPropertyName<IEmailHistoryModel>(c => c.ImportanceType)
             };
+            options.Sorter = orderBy.GetSorter();
 
             IEnumerable<IEmailHistoryModel> list = await EmailHistoryService.FindAsync(options);
             return Ok(Mapper.Map<IEnumerable<EmailHistoryGet>>(list));
@@ -63,9 +66,10 @@ namespace Managemail.Web
         public class EmailHistoryGet
         {
             public Guid Id { get; set; }
+            public DateTime DateCreated { get; set; }
             public String FromEmailAddress { get; set; }
             public String ToEmailAddress { get; set; }
-            public String CcemailAddress { get; set; }
+            public String CcEmailAddress { get; set; }
             public String Subject { get; set; }
             public String Content { get; set; }
             public ImportanceTypeGet ImportanceType { get; set; }
@@ -87,7 +91,7 @@ namespace Managemail.Web
             [EmailAddress]
             public String ToEmailAddress { get; set; }
 
-            public String CcemailAddress { get; set; }
+            public String CcEmailAddress { get; set; }
 
             [Required]
             [MaxLength(250)]
